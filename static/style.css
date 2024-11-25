@@ -1,50 +1,111 @@
+/* Jumbotron */
 .jumbotron {
-    background-color: orange;
+    background-color:  #007BFF; /* Ganti dengan warna orange lebih soft */
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+/* Heading */
+.heading {
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Lead */
+.lead {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* Title for Original Text and Summary */
+.original_title, .summary_title {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    border-radius: 5px;
 }
 
 .original_title {
-    background-color: orangered;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 2px;
-    justify-content: center;
+    background-color: #007BFF;/* Warna orangered lebih soft */
 }
 
 .summary_title {
-    background-color: greenyellow;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 2px;
-    justify-content: center;
+    background-color: #007BFF; /* Warna greenyellow lebih soft */
 }
 
+/* Container for Original Text and Summary */
 .srt{
     display: flex;
     flex-direction: row;
 }
-
-.originalTxt{
-    background-color: orangered;
-    padding: 20px;
+/* Styling for original text */
+.originalTxt {
+    background-color: #ebe9e8; /* Warna orangered */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.summaryTxt{
-    background-color: greenyellow;
-    padding: 20px;
-    margin-left: 10px;
+/* Styling for summary text */
+.summaryTxt {
+    background-color: #ebe9e8; /* Warna greenyellow */
+    color: black;
+    padding: 25px;
+    border-radius: 8px;
+    margin-left: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.heading{
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
+/* Button Styling */
+.submitBtn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.lead{
-    display: flex;
-    justify-content: center;
+.submitBtn:hover {
+    background-color: #0056b3;
 }
 
-.submitBtn{
-    margin-top: 10px;
+/* Back Button Styling */
+a.btn-primary {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+a.btn-primary:hover {
+    background-color: #218838;
+}
+
+.display-4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 145px;
 }

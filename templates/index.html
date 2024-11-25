@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Text Summarization</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="/static/style.css"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
-    <div class="container">
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4 heading">Text summarization</h1>
-                <p class="lead">Retive the best summary for the text</p>
+    <header class="bg-primary text-white py-3">
+        <div class="container text-center">
+            <h1 class="display-4">Text Summarization</h1>
+            <p class="lead">Retrieve the best summary for your text effortlessly</p>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Input Your Text</h2>
+                <form action="/analyze" method="POST">
+                    <div class="mb-3">
+                        <label for="rawtext" class="form-label">Enter Text:</label>
+                        <textarea name="rawtext" id="rawtext" class="form-control" rows="5" placeholder="Type or paste your text here..." required></textarea>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Summarize</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </main>
 
-        <form action="/analyze" method="POST">
-            <textarea name="rawtext" class="form-control" , rows=3, placeholder="Enter your raw text"></textarea>
-            <button class="btn btn-primary submitBtn" type="submit">Submit</button>
-        </form>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    <footer class="bg-light text-center py-3">
+        <p class="mb-0">© 2024 Text Summarization. All Rights Reserved.</p>
+    </footer>
 </body>
+
 </html>
