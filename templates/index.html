@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Text Summarization</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/static/style.css">
 </head>
@@ -30,17 +30,113 @@
                         <label for="rawtext" class="form-label">Enter Text:</label>
                         <textarea name="rawtext" id="rawtext" class="form-control" rows="5" placeholder="Type or paste your text here..." required></textarea>
                     </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary btn-lg">Summarize</button>
+                    <div class="d-flex align-items-center">
+                        <div class="btn-group dropup">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Language
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/1920px-Flag_of_the_United_States_%28Pantone%29.svg.png" alt="US Flag" style="width: 20px; height: auto;" />
+                                    English</a>
+                                <a class="dropdown-item" href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Flag_of_Indonesia_%28physical_version%29.svg/2560px-Flag_of_Indonesia_%28physical_version%29.svg.png" alt="indo Flag" style="width: 20px; height: auto;" /> Indonesia</a>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg me-3" id="summarizeButton">
+                            <i class="bi bi-magic"></i> Summarize
+                        </button>
+                        <button class="btn btn-success" type="submit" style="margin-left: 10px;">Words: {{original_text_len}}</button>
                     </div>
                 </form>
             </div>
         </div>
     </main>
 
+    <div id="errorMessage" class="alert alert-danger mt-3" style="display: none;">
+        Not Enough Text. Please enter at least 30 words in the input field.
+        <button class="btn btn-danger mt-2" onclick="tryAgain()">Try Again</button>
+    </div>
+    
+
+    <section class="container my-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">About AI Summarize</h2>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-check-circle"></i> <strong>Shortens the text</strong> while preserving the main points.</li>
+                    <li><i class="bi bi-check-circle"></i> <strong>Generates summaries</strong> for any type of content, including essays, blog posts, and more.</li>
+                    <li><i class="bi bi-check-circle"></i> <strong>Shows the word count</strong> both before and after summarization to give you a clearer understanding of the summary's length.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container my-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">How to Summarize a Text?</h2>
+                <div class="d-flex align-items-start mb-3">
+                    <div class="step-number bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px;">
+                        1
+                    </div>
+                    <p>Type your text in the input box. Make sure the text contains at least <strong>30 words</strong> to generate an accurate summary.</p>
+                </div>
+                <div class="d-flex align-items-start mb-3">
+                    <div class="step-number bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px;">
+                        2
+                    </div>
+                    <p>Review your input to ensure there are no errors or unnecessary symbols that might affect the summarization.</p>
+                </div>
+                <div class="d-flex align-items-start mb-3">
+                    <div class="step-number bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px;">
+                        3
+                    </div>
+                    <p>Click the <strong>“Summarize”</strong> button to let the AI process your text and generate the summary.</p>
+                </div>
+                <div class="d-flex align-items-start mb-3">
+                    <div class="step-number bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px;">
+                        4
+                    </div>
+                    <p>Receive a concise summary along with the word count details before and after summarization.</p>
+                </div>
+                <div class="d-flex align-items-start">
+                    <div class="step-number bg-primary text-white rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 40px; height: 40px;">
+                        5
+                    </div>
+                    <p>Review and copy the summary for your needs. You can also edit or refine the output as desired.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
     <footer class="bg-light text-center py-3">
         <p class="mb-0">© 2024 Text Summarization. All Rights Reserved.</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+        function countWords(text) {
+            return text.trim().split(/\s+/).length;
+        }
+    
+        document.getElementById('summarizeButton').addEventListener('click', function(event) {
+            var text = document.getElementById('rawtext').value;
+    
+            if (countWords(text) < 30) {
+                event.preventDefault();  
+                document.getElementById('errorMessage').style.display = 'block'; 
+            }
+        });
+    
+        function tryAgain() {
+            document.getElementById('errorMessage').style.display = 'none'; 
+        }
+    </script>
+    
 </body>
 
 </html>
